@@ -25,6 +25,6 @@ ul {
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    gap: 4px;
+    gap: 5px;
 }
-</style>~/stores/simulation/simulation~/stores/simulation
+</style>

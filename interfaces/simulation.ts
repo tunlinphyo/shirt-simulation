@@ -22,6 +22,7 @@ export interface SimuData {
     color: string | number;
     pattern: string | number;
     patternSize: string | number;
+    patternSpacing: string | number;
     patternColor: string | number;
 }
 

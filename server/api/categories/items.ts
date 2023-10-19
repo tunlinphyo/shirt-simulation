@@ -256,30 +256,100 @@ export const categoryItems: CategoryItem[] = [
     {
         id: 37,
         category_id: 4,
+        name: '30',
+        value: 30,
+        description: 'sizes',
+    },
+    {
+        id: 38,
+        category_id: 4,
         name: '40',
         value: 40,
         description: 'sizes',
     },
     {
-        id: 38,
+        id: 39,
+        category_id: 4,
+        name: '50',
+        value: 50,
+        description: 'sizes',
+    },
+    {
+        id: 40,
         category_id: 4,
         name: '60',
         value: 60,
         description: 'sizes',
     },
     {
-        id: 39,
+        id: 59,
+        category_id: 4,
+        name: '70',
+        value: 70,
+        description: 'sizes',
+    },
+    {
+        id: 60,
         category_id: 4,
         name: '80',
         value: 80,
         description: 'sizes',
     },
     {
-        id: 40,
-        category_id: 4,
-        name: '100',
-        value: 100,
-        description: 'sizes',
+        id: 51,
+        category_id: 6,
+        name: '10',
+        value: 10,
+        description: 'spacing',
+    },
+    {
+        id: 52,
+        category_id: 6,
+        name: '20',
+        value: 20,
+        description: 'spacing',
+    },
+    {
+        id: 53,
+        category_id: 6,
+        name: '30',
+        value: 30,
+        description: 'spacing',
+    },
+    {
+        id: 54,
+        category_id: 6,
+        name: '40',
+        value: 40,
+        description: 'spacing',
+    },
+    {
+        id: 55,
+        category_id: 6,
+        name: '50',
+        value: 50,
+        description: 'spacing',
+    },
+    {
+        id: 56,
+        category_id: 6,
+        name: '60',
+        value: 60,
+        description: 'spacing',
+    },
+    {
+        id: 57,
+        category_id: 6,
+        name: '70',
+        value: 70,
+        description: 'spacing',
+    },
+    {
+        id: 58,
+        category_id: 6,
+        name: '80',
+        value: 80,
+        description: 'spacing',
     },
     {
         id: 41,
@@ -362,7 +432,6 @@ export function simuLoading(time = 1000) {
     })
 }
 
-export default defineEventHandler(async (event) => {
-    await simuLoading()
+export default defineEventHandler((event) => {
     return categoryItems
 })

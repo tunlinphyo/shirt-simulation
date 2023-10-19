@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import { _getValue, _applyControl, _seDefaultValues, _getActiveId } from './healper'
+import { _getValue, _applyControl, _setDefaultValues, _getActiveId } from './healper'
 import {
     Category, CategoryWithValue,
     CategoryItem,
     SimuData,
     NullableId, SelectedItem, RemoveCategory
 } from "~/interfaces/simulation"
-import { COLOR_ID, DESIGN_ID, PATTERN_COLOR_ID, PATTERN_ID, PATTERN_SIZE_ID } from './const'
+import { COLOR_ID, DESIGN_ID, PATTERN_COLOR_ID, PATTERN_ID, PATTERN_SIZE_ID, PATTERN_SPACING_ID } from './const'
 
 export const useSimulationStore = defineStore('simulation-store', () => {
     const { getCategoryItems } = useDataApiStore()
@@ -44,12 +44,14 @@ export const useSimulationStore = defineStore('simulation-store', () => {
         const colorId = _getActiveId(COLOR_ID, currentCategory.value, tempItemId.value, selectedItems.value)
         const pattternId = _getActiveId(PATTERN_ID, currentCategory.value, tempItemId.value, selectedItems.value) // selected[PATTERN_ID]
         const pattternSizeId = _getActiveId(PATTERN_SIZE_ID, currentCategory.value, tempItemId.value, selectedItems.value) // selected[PATTERN_SIZE_ID]
+        const patternSpacingId = _getActiveId(PATTERN_SPACING_ID, currentCategory.value, tempItemId.value, selectedItems.value)
         const pattternColorId = _getActiveId(PATTERN_COLOR_ID, currentCategory.value, tempItemId.value, selectedItems.value) // selected[PATTERN_COLOR_ID]
 
         const design = designId && dataCategoryItems.value.find(item => item.id === designId)
         const color = colorId && dataCategoryItems.value.find(item => item.id === colorId)
         const pattern = pattternId && dataCategoryItems.value.find(item => item.id === pattternId)
         const pattternSize = pattternSizeId && dataCategoryItems.value.find(item => item.id === pattternSizeId)
+        const patternSpacing = patternSpacingId && dataCategoryItems.value.find(item => item.id === patternSpacingId)
         const patternColor = pattternColorId && dataCategoryItems.value.find(item => item.id === pattternColorId)
 
         return {
@@ -57,6 +59,7 @@ export const useSimulationStore = defineStore('simulation-store', () => {
             'color': color ? color.value : '#fff',
             'pattern': pattern ? pattern.value : '',
             'patternSize': pattternSize ? pattternSize.value : 10,
+            'patternSpacing': patternSpacing ? patternSpacing.value : 10,
             'patternColor': patternColor ? patternColor.value : '#fff',
         }
     })
@@ -89,7 +92,7 @@ export const useSimulationStore = defineStore('simulation-store', () => {
         const temp = { ...selectedItems.value }
         if (!categoryId) return
         temp[categoryId] = tempItemId.value
-        selectedItems.value = _seDefaultValues(temp, categoryId)
+        selectedItems.value = _setDefaultValues(temp, categoryId)
         selectCategory(null)
     }
     function cancelItem() {

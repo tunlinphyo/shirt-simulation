@@ -13,10 +13,10 @@
 <script lang="ts" setup>
 const emit = defineEmits()
 
-function onBack(id:number) {
+function onBack() {
   emit('back')
 }
-function onSave(id:number) {
+function onSave() {
   emit('save')
 }
 </script>

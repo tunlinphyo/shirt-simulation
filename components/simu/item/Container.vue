@@ -11,7 +11,7 @@
         </ContainerScroll>
         <footer>
             <AppButton @click="selectCategory(null)">Cancel</AppButton>
-            <AppButton theme="primary" @click="saveItem(categoryId)">Save</AppButton>
+            <AppButton theme="primary" @click="saveItem(categoryId)">Select</AppButton>
         </footer>
     </section>
 </template>

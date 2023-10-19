@@ -4,8 +4,7 @@ import { NuxtLink } from '../../.nuxt/components';
         <div class="header-container">
             <h1>Shirt Simulation</h1>
             <nav>
-                <NuxtLink to="/">Home</NuxtLink>
-                <NuxtLink to="/about">About</NuxtLink>
+                
             </nav>
         </div>
     </header>
@@ -29,15 +28,10 @@ header {
     align-items: center;
     padding: 0 20px;
 }
-nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 20px;
-}
-@media (max-width: 767.9px) {
-    nav {
-        display: none;
-    }
+h1 {
+    font-weight: 700;
+    letter-spacing: -6px;
+    text-transform: uppercase;
+    padding-top: 5px;
 }
 </style>

@@ -49,6 +49,10 @@ function getStyles(item: CategoryItem) {
   cursor: pointer;
   overflow: hidden;
 }
+.item:hover,
+.item:focus {
+  box-shadow: 0 0 0 2px #6c5ce7;
+}
 .item.active {
   box-shadow: 0 0 0 2px #f00;
 }
@@ -57,7 +61,7 @@ function getStyles(item: CategoryItem) {
   position: relative;
 }
 .value {
-  padding: 0 20px;
+  padding: 0 15px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -70,7 +74,8 @@ function getStyles(item: CategoryItem) {
   background-repeat: no-repeat;
   background-position: center;
 }
-.media.sizes::before {
+.media.sizes::before,
+.media.spacing::before {
   content: attr(data-value);
   display: block;
   position: absolute;
@@ -126,8 +131,8 @@ function getStyles(item: CategoryItem) {
 .media.media.patterns[data-value="polka-diamon"] {
   background-color: #e5e5f7;
   background-image:  radial-gradient(#aaa 2px, transparent 2px), radial-gradient(#aaa 2px, #e5e5f7 2px);
-  background-size: 20px 20px;
-  background-position: 0 0,10px 10px;
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
 }
 .media.media.patterns[data-value="lines"] {
   background-color: #e5e5f7;

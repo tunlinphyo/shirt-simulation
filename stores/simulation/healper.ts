@@ -3,7 +3,7 @@ import {
     RemoveCategory,
     NullableId, SelectedItem
 } from "~/interfaces/simulation"
-import { PATTERN_ID, PATTERN_SIZE_ID, PATTERN_COLOR_ID } from "./const"
+import { PATTERN_ID, PATTERN_SIZE_ID, PATTERN_COLOR_ID, PATTERN_SPACING_ID } from "./const"
 
 export function _getValue(list: CategoryItem[], categoryId:NullableId, selected: SelectedItem): CategoryItem | undefined {
     if (!categoryId) return undefined
@@ -28,10 +28,11 @@ export function _applyControl(list:Category[], removes:RemoveCategory[], selecte
     return list.filter(cate => !toRemoves.includes(cate.id))
 }
 
-export function _seDefaultValues(selected:SelectedItem, categoryId:number) {
+export function _setDefaultValues(selected:SelectedItem, categoryId:number) {
     if (categoryId == PATTERN_ID) {
         if (!selected[PATTERN_SIZE_ID]) selected[PATTERN_SIZE_ID] = 27
         if (!selected[PATTERN_COLOR_ID]) selected[PATTERN_COLOR_ID] = 41
+        if (!selected[PATTERN_SPACING_ID]) selected[PATTERN_SPACING_ID] = 51
     }
     return { ...selected }
 }

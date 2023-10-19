@@ -36,6 +36,7 @@ if (contErr.value) console.log('ERROR_OCCUR')
 else setControls(controls.value)
 
 function onBack() {
+    console.log("GO_BACK")
     router.back()
 }
 </script>

@@ -22,6 +22,11 @@ const categories: Category[] = [
         parent: 3,
     },
     {
+        id: 6,
+        name: 'Spacing',
+        parent: 3,
+    },
+    {
         id: 5,
         name: 'Base Color',
         parent: 3,
