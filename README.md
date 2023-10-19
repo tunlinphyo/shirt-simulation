@@ -72,4 +72,15 @@ yarn preview
 bun run preview
 ```
 
+Deploy to Firebase
+
+```bash
+# build
+NITRO_PRESET=firebase npm run build
+
+#deploy
+npx firebase-tools deploy
+```
+
+
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
