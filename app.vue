@@ -41,11 +41,12 @@ body {
 
 .slide-enter-active,
 .slide-leave-active {
-    transition: transform 0.8s var(--custom-ease);
+    transition: transform .5s var(--custom-ease);
 }
 
 .slide-enter-from,
 .slide-leave-to {
     transform: translateX(100%);
+    transition: transform .3s ease;
 }
 </style>

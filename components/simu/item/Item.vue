@@ -1,5 +1,5 @@
 <template>
-  <div class="item"
+  <button class="item"
     :class="{'active': item.id === current}"
     @click="onClick(item.id)">
     <div class="media"
@@ -7,8 +7,8 @@
       :class="item.description"
       :style="getStyles(item)"
     ></div>
-    <div class="value">{{ item.name }}</div>
-  </div>
+    <div class="value">{{ item.name }} | {{ item.id }}</div>
+  </button>
 </template>
 
 <script lang="ts" setup>
@@ -46,8 +46,8 @@ function getStyles(item: CategoryItem) {
   background-color: #eee;
   border-radius: 4px;
   border: 1px solid #ddd;
-  cursor: pointer;
   overflow: hidden;
+  padding: 0;
 }
 .item:hover,
 .item:focus {
@@ -57,10 +57,12 @@ function getStyles(item: CategoryItem) {
   box-shadow: 0 0 0 2px #f00;
 }
 .media {
+  height: 100px;
   background-color: #fff;
   position: relative;
 }
 .value {
+  height: 40px;
   padding: 0 15px;
   display: flex;
   justify-content: flex-start;

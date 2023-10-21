@@ -1,31 +1,38 @@
 import { defineStore } from 'pinia'
-import { _getValue, _applyControl, _setDefaultValues, _getActiveId } from './healper'
+import { _getValue, _applyControl, _setDefaultValues, _getActiveData, _waiting, _isErrors, _getRequired } from './helper'
 import {
     Category, CategoryWithValue,
     CategoryItem,
     SimuData,
-    NullableId, SelectedItem, RemoveCategory
+    NullableId, SelectedItem, RemoveCategory, RequiredCategory
 } from "~/interfaces/simulation"
-import { COLOR_ID, DESIGN_ID, PATTERN_COLOR_ID, PATTERN_ID, PATTERN_SIZE_ID, PATTERN_SPACING_ID } from './const'
 
 export const useSimulationStore = defineStore('simulation-store', () => {
     const { getCategoryItems } = useDataApiStore()
+    const { $toast, $confirm, $loading } = useNuxtApp()
 
     const dataCategories = ref<Category[]>([])
     const dataCategoryItems = ref<CategoryItem[]>([])
     const removeCategories = ref<RemoveCategory[]>([])
+    const requiredCategories = ref<RequiredCategory[]>([])
 
     const loading = ref(false)
+    const submitted = ref(false)
     const currentCategory = ref<NullableId>(null)
     const selectedItems = ref<SelectedItem>({})
     const tempItemId = ref<NullableId>(null)
 
     const currentCategories = computed<CategoryWithValue[]>(() => {
         return _applyControl(dataCategories.value, removeCategories.value, selectedItems.value)
-            .map(cate => ({
-                ...cate,
-                value: _getValue(dataCategoryItems.value, cate.id, selectedItems.value)?.name || ''
-            }))
+            .map(cate => {
+                const value = _getValue(dataCategoryItems.value, cate.id, selectedItems.value)?.name || ''
+                const required = _getRequired(requiredCategories.value, cate.id, selectedItems.value)
+                return {
+                    ...cate,
+                    value,
+                    error: submitted.value && (cate.required || required) && !value
+                }
+            })
     })
     const selectedCateogry = computed<Category | undefined>(() => {
       return dataCategories.value.find(item => item.id === currentCategory.value)
@@ -40,19 +47,14 @@ export const useSimulationStore = defineStore('simulation-store', () => {
     })
 
     const simulationData = computed<SimuData>(() => {
-        const designId = _getActiveId(DESIGN_ID, currentCategory.value, tempItemId.value, selectedItems.value)
-        const colorId = _getActiveId(COLOR_ID, currentCategory.value, tempItemId.value, selectedItems.value)
-        const pattternId = _getActiveId(PATTERN_ID, currentCategory.value, tempItemId.value, selectedItems.value) // selected[PATTERN_ID]
-        const pattternSizeId = _getActiveId(PATTERN_SIZE_ID, currentCategory.value, tempItemId.value, selectedItems.value) // selected[PATTERN_SIZE_ID]
-        const patternSpacingId = _getActiveId(PATTERN_SPACING_ID, currentCategory.value, tempItemId.value, selectedItems.value)
-        const pattternColorId = _getActiveId(PATTERN_COLOR_ID, currentCategory.value, tempItemId.value, selectedItems.value) // selected[PATTERN_COLOR_ID]
-
-        const design = designId && dataCategoryItems.value.find(item => item.id === designId)
-        const color = colorId && dataCategoryItems.value.find(item => item.id === colorId)
-        const pattern = pattternId && dataCategoryItems.value.find(item => item.id === pattternId)
-        const pattternSize = pattternSizeId && dataCategoryItems.value.find(item => item.id === pattternSizeId)
-        const patternSpacing = patternSpacingId && dataCategoryItems.value.find(item => item.id === patternSpacingId)
-        const patternColor = pattternColorId && dataCategoryItems.value.find(item => item.id === pattternColorId)
+        const {
+            design,
+            color,
+            pattern,
+            pattternSize,
+            patternSpacing,
+            patternColor
+        } = _getActiveData(currentCategory.value, tempItemId.value, selectedItems.value, dataCategoryItems.value)
 
         return {
             'design': design ? design.value as string : '/shirts/1.png',
@@ -72,6 +74,10 @@ export const useSimulationStore = defineStore('simulation-store', () => {
     function setControls(list:RemoveCategory[] | null) {
         if (!list) return
         removeCategories.value = list
+    }
+    function setRequireds(list:RequiredCategory[] | null) {
+        if (!list) return
+        requiredCategories.value = list
     }
 
     async function selectCategory(id:NullableId) {
@@ -98,8 +104,34 @@ export const useSimulationStore = defineStore('simulation-store', () => {
     function cancelItem() {
         selectCategory(null)
     }
-    function saveSimulation() {
-        console.log('SAVE_SIMULATION', selectedItems.value)
+    async function saveSimulation() {
+        submitted.value = true
+        const errors = _isErrors(currentCategories.value)
+        if (errors.length) {
+            for await (const error of errors) {
+                $toast(error)
+                await _waiting(300)
+            }
+            return
+        }
+        const result = await $confirm('Are you sure to checkout?')
+        if (!result) return
+
+        const close = $loading('Saving..')
+        await _waiting(4000)
+        close()
+
+        $toast('This is a confirm toast.')
+        console.log('SELECTED_DATA', { ...selectedItems.value })
+        _resetStore()
+    }
+
+    function _resetStore() {
+        loading.value = false
+        submitted.value = false
+        currentCategory.value = null
+        selectedItems.value = {}
+        tempItemId.value = null
     }
 
     return {
@@ -114,6 +146,7 @@ export const useSimulationStore = defineStore('simulation-store', () => {
 
         setCategories,
         setControls,
+        setRequireds,
 
         selectCategory,
         selectItem,

@@ -12,9 +12,14 @@ export const useDataApiStore = () => {
         return useFetch('/api/categories/controls')
     }
 
+    function getRequiredCategory() {
+        return useFetch('/api/categories/requireds')
+    }
+
     return {
         getCategories,
         getCategoryItems,
         getCategoryControls,
+        getRequiredCategory,
     }
 }

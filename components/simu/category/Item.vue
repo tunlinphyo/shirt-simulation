@@ -1,6 +1,8 @@
 
 <template>
-    <button @click="onClick(item.id)">
+    <button @click="onClick(item.id)"
+        :class="{'error': item.error}"
+    >
         <div class="name">{{ item.name }}</div>
         <div class="value">{{ item.value }}</div>
         <div class="end"></div>
@@ -49,6 +51,11 @@ button:focus {
     box-shadow: 0 0 0 2px #6c5ce7;
 }
 
+button.error {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 1px #e74c3c;
+}
+
 .name {
     color: #666;
 }
@@ -67,15 +74,15 @@ button:focus {
     content: '';
     display: block;
     position: absolute;
-    width: 20px;
+    width: 15px;
     height: 0;
     border-top: 1px solid #ccc;
 }
 
 .end::before {
-    transform: translate(0, -7px) rotate(45deg);
+    transform: translate(0, -5px) rotate(45deg);
 }
 
 .end::after {
-    transform: translate(0, 7px) rotate(-45deg);
+    transform: translate(0, 5px) rotate(-45deg);
 }</style>

@@ -2,6 +2,7 @@ export interface Category {
     id: number;
     name: string;
     parent: number|null;
+    required?: boolean;
 }
 
 export interface CategoryItem {
@@ -15,6 +16,7 @@ export interface CategoryItem {
 
 export interface CategoryWithValue extends Category {
     value: string;
+    error?: boolean;
 }
 
 export interface SimuData {
@@ -29,6 +31,12 @@ export interface SimuData {
 export interface RemoveCategory {
     category_id: number;
     item_id: number;
+    category_ids: number[];
+}
+
+export interface RequiredCategory {
+    category_id: number;
+    item_ids: number[];
     category_ids: number[];
 }
 

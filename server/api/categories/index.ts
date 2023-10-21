@@ -5,11 +5,13 @@ const categories: Category[] = [
         id: 1,
         name: 'Designs',
         parent: null,
+        required: true,
     },
     {
         id: 2,
         name: 'Colors',
         parent: null,
+        required: true,
     },
     {
         id: 3,

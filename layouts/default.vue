@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main id="__main">
         <AppHeader />
         <slot />
     </main>
@@ -17,9 +17,10 @@ main {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: 60px minmax(0, 1fr);
+    position: relative;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
     main {
         max-width: 1180px;
         max-height: 800px;
@@ -27,5 +28,5 @@ main {
         border-radius: 30px;
         overflow: hidden;
     }
-}
+} */
 </style>
