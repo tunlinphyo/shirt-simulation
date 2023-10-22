@@ -7,7 +7,7 @@
       :class="item.description"
       :style="getStyles(item)"
     ></div>
-    <div class="value">{{ item.name }} | {{ item.id }}</div>
+    <div class="value">{{ item.name }}</div>
   </button>
 </template>
 

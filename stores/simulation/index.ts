@@ -8,8 +8,9 @@ import {
 } from "~/interfaces/simulation"
 
 export const useSimulationStore = defineStore('simulation-store', () => {
+    const router = useRouter()
     const { getCategoryItems } = useDataApiStore()
-    const { $toast, $confirm, $loading } = useNuxtApp()
+    const { $toast, $toasts, $confirm, $loading } = useNuxtApp()
 
     const dataCategories = ref<Category[]>([])
     const dataCategoryItems = ref<CategoryItem[]>([])
@@ -108,10 +109,7 @@ export const useSimulationStore = defineStore('simulation-store', () => {
         submitted.value = true
         const errors = _isErrors(currentCategories.value)
         if (errors.length) {
-            for await (const error of errors) {
-                $toast(error)
-                await _waiting(300)
-            }
+            $toasts(errors)
             return
         }
         const result = await $confirm('Are you sure to checkout?')
@@ -123,7 +121,12 @@ export const useSimulationStore = defineStore('simulation-store', () => {
 
         $toast('This is a confirm toast.')
         console.log('SELECTED_DATA', { ...selectedItems.value })
-        _resetStore()
+        router.replace('/document/toasts')
+        // _resetStore()
+    }
+
+    async function goHome() {
+        router.replace('/')
     }
 
     function _resetStore() {
@@ -153,5 +156,6 @@ export const useSimulationStore = defineStore('simulation-store', () => {
         saveItem,
         cancelItem,
         saveSimulation,
+        goHome,
     }
 })

@@ -11,11 +11,6 @@ export interface Props {
 }
 
 const props = defineProps<Props>()
-const emit = defineEmits()
-
-function onClick() {
-    emit('click')
-}
 </script>
 
 <style scoped>

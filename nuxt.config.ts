@@ -26,12 +26,9 @@ export default defineNuxtConfig({
     preload: true,
     display: 'swap',
     families: {
-      Roboto: true,
-      'Josefin+Sans': true,
-      Lato: [100, 300],
-      Raleway: {
-        wght: [100, 400],
-        ital: [100]
+      'sans-serif': true,
+      'Montserrat': {
+        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900]
       },
     }
   }

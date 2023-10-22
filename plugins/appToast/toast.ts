@@ -6,7 +6,7 @@ const init = () => {
     return node
 }
 
-const createToast = (text: string) => {
+const createToast = (text:string) => {
     const node = document.createElement('output')
 
     node.innerText = text
@@ -17,33 +17,18 @@ const createToast = (text: string) => {
     return node
 }
 
-const addToast = (toast: HTMLOutputElement) => {
+const addToast = (Toaster:HTMLElement, toast:HTMLOutputElement) => {
     const { matches: motionOK } = window.matchMedia(
         '(prefers-reduced-motion: no-preference)'
     )
 
     Toaster.children.length && motionOK
-        ? flipToast(toast)
+        ? flipToast(Toaster, toast)
         : Toaster.appendChild(toast)
 }
 
-const Toast = (text: string) => {
-    let toast = createToast(text)
-    addToast(toast)
-
-    return new Promise(async (resolve, reject) => {
-        await Promise.allSettled(
-            toast.getAnimations().map(animation =>
-                animation.finished
-            )
-        )
-        Toaster.removeChild(toast)
-        resolve(text)
-    })
-}
-
 // https://aerotwist.com/blog/flip-your-animations/
-const flipToast = (toast: HTMLOutputElement) => {
+const flipToast = (Toaster:HTMLElement, toast:HTMLOutputElement) => {
     const first = Toaster.offsetHeight
     Toaster.appendChild(toast)
     const last = Toaster.offsetHeight
@@ -60,6 +45,36 @@ const flipToast = (toast: HTMLOutputElement) => {
     animation.startTime = document.timeline.currentTime
 }
 
-const Toaster = init()
 
-export default Toast
+const waiting = (time:number = 3000) => {
+    return new Promise(resolve => {
+        const timeout = setTimeout(() => {
+            clearTimeout(timeout)
+            resolve(true)
+        }, time)
+    })
+}
+
+const Toast = (Toaster:HTMLElement ,text:string) => {
+    let toast = createToast(text)
+    addToast(Toaster, toast)
+
+    return new Promise(async (resolve, reject) => {
+        await Promise.allSettled(
+            toast.getAnimations().map(animation =>
+                animation.finished
+            )
+        )
+        Toaster.removeChild(toast)
+        resolve(text)
+    })
+}
+
+const Toasts = async (Toaster:HTMLElement, texts:string[], wait:number = 300) => {
+    for await (const text of texts) {
+        Toast(Toaster, text)
+        await waiting(wait)
+    }
+}
+
+export { init, Toast, Toasts }

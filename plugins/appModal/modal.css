@@ -36,7 +36,7 @@
 
 .app-loading::backdrop,
 .app-module::backdrop {
-    background: rgba(0, 0, 0, .3);
+    background: rgba(0, 0, 0, .4);
     animation: BackdropEnter .4s ease;
 }
 
@@ -49,7 +49,7 @@
     height: 40px;
     border-radius: 50%;
     position: relative;
-    animation: Rotate .8s linear infinite
+    animation: Rotate .8s linear infinite;
 }
 
 .app-loading-icon::before {
@@ -61,7 +61,6 @@
     border: 4px solid #6c5ce7;
     animation: PrixClipFix 1.6s linear infinite;
 }
-
 
 .app-loading p {
     margin: 0;

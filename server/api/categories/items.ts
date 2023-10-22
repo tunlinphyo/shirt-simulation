@@ -432,6 +432,7 @@ export function simuLoading(time = 1000) {
     })
 }
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
+    await simuLoading()
     return categoryItems
 })

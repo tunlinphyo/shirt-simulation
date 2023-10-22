@@ -19,6 +19,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "firebase-functions": "^4.4.1",
-    "pinia": "^2.1.7"
+    "pinia": "^2.1.7",
+    "vue3-code-block": "^2.2.12"
   }
 }

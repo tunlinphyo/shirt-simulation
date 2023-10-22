@@ -11,7 +11,7 @@
 :root {
     --max-width: 1200px;
     --custom-ease: cubic-bezier(.2, 1, .2, 1);
-    --font: 'Josefin Sans', sans-serif;
+    --font: 'Montserrat', sans-serif;;
 }
 
 html,
@@ -21,6 +21,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    font-size: 16px;
     font-family: var(--font);
 }
 
