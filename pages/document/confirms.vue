@@ -37,7 +37,7 @@
       </ContainerDocument>
       <ContainerFooter 
           :prev="{ url: '/document/alerts', name: 'alert' }"
-          :next="{ url: '/document/loading', name: 'loading' }"
+          :next="{ url: '/document/prompts', name: 'prompt' }"
       />
   </LayoutDocument>
 </template>
@@ -61,6 +61,7 @@ if (result) {
   $toast('You click YES')
 } else {
   $toast('You click NO')
+}
 `
 
 async function sampleConfirm() {

@@ -10,6 +10,11 @@
     animation: AlertEnter .4s cubic-bezier(.05, .1, .2, 1.2);
 }
 
+.app-module-prompt {
+    max-width: 360px;
+    margin: 60px auto auto;
+}
+
 .app-loading {
     border: none;
     border-radius: 8px;
@@ -112,16 +117,48 @@
     max-width: 100%;
 }
 
+.app-module-prompt footer,
 .app-module-confirm form {
     display: flex;
 }
 
+.app-module-prompt footer button,
 .app-module-confirm button {
     flex: 1;
 }
 
+.app-module-prompt footer button:first-child,
 .app-module-confirm button:first-child {
     border-right: 1px solid #ddd;
+}
+
+.app-module-input_container {
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.app-module-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    font-size: .975rem;
+    border: 1px solid #666;
+    border-radius: 3px;
+    outline: none;
+}
+.app-module-input:focus {
+    box-shadow: 0 0 0 1px #666;
+}
+.app-module-input--error,
+.app-module-input--error:focus {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 1px #e74c3c;
+}
+.app-module-error {
+    font-size: .8rem;
+    color: #e74c3c;
 }
 
 @keyframes Rotate {

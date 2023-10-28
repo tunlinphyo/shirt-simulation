@@ -53,4 +53,5 @@ a:active,
 a:hover,
 a:focus {
     box-shadow: 0 0 0 2px #6c5ce7;
-}</style>
+}
+</style>

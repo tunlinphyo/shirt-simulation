@@ -4,10 +4,7 @@
             <SimuDisplay />
         </template>
         <template #body>
-            <SimuContainer
-                @back="goHome"
-                @save="saveSimulation"
-            >
+            <SimuContainer @back="goHome" @save="saveSimulation">
                 <SimuCategoryList />
             </SimuContainer>
             <Transition name="slide">
@@ -15,7 +12,7 @@
             </Transition>
         </template>
     </LayoutSimulation>
-  </template>
+</template>
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'

@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-
 export interface Props {
     theme?: string;
 }
@@ -28,6 +27,7 @@ button {
     font-size: .8rem;
     letter-spacing: 2px;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 button.primary {

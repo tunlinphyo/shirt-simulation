@@ -3,7 +3,7 @@
         <ContainerDocument>
             <h1>Toast</h1>
             <ContainerArticle>
-                <p>Create sample Toast.</p>
+                <p>Create sample Toast. Clack again and again to see toast stack.</p>
                 <AppButton @click="sampleToast()">Sample Toast</AppButton>
                 <ContainerSpacer />
                 <ClientOnly>
@@ -44,6 +44,7 @@
             </ContainerArticle>
         </ContainerDocument>
         <ContainerFooter 
+            :prev="{ url: '/document/loading', name: 'loading' }"    
             :next="{ url: '/document/alerts', name: 'alert' }"
         />
     </LayoutDocument>

@@ -59,7 +59,7 @@
               </ClientOnly>
           </ContainerArticle>
           <ContainerArticle>
-              <p>Also can create multiple alert list browser native alert by using await.</p>
+              <p>Also can create multiple alert like browser native alert by using await.</p>
               <AppButton @click="defaultAlert()">Native Like Alert</AppButton>
               <ContainerSpacer />
               <ClientOnly>

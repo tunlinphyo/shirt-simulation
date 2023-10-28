@@ -423,16 +423,6 @@ export const categoryItems: CategoryItem[] = [
     },
 ]
 
-export function simuLoading(time = 1000) {
-    return new Promise((resolve) => {
-        const tiemout = setTimeout(() => {
-            clearTimeout(tiemout)
-            resolve('SUCCESS')
-        }, time)
-    })
-}
-
-export default defineEventHandler(async (event) => {
-    await simuLoading()
+export default defineEventHandler((event) => {
     return categoryItems
 })

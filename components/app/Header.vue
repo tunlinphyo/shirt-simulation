@@ -8,7 +8,7 @@ import { NuxtLink } from '../../.nuxt/components';
                 </NuxtLink>
             </h1>
             <nav>
-                
+                <a class="github" href="https://github.com/tunlinphyo/shirt-simulation" target="_blank" rel="noopener noreferrer"></a>
             </nav>
         </div>
     </header>
@@ -34,7 +34,7 @@ header {
 }
 h1 {
     font-weight: 700;
-    letter-spacing: -6px;
+    letter-spacing: -3px;
     text-transform: uppercase;
     padding-top: 5px;
 }
@@ -42,5 +42,14 @@ h1 a {
     text-decoration: none;
     color: #000;
     font-weight: 700;
+}
+.github {
+    display: block;
+    width: 42px;
+    height: 42px;
+    background-image: url(/icons/github.svg);
+    background-size: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 </style>
