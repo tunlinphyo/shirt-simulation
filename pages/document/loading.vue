@@ -19,7 +19,7 @@
                 </ClientOnly>
             </ContainerArticle>
         </ContainerDocument>
-        <ContainerFooter :prev="{ url: '/document/confirms', name: 'confirm' }"
+        <ContainerFooter :prev="{ url: '/document/prompts', name: 'prompt' }"
             :next="{ url: '/document/toasts', name: 'toast' }" />
     </LayoutDocument>
 </template>

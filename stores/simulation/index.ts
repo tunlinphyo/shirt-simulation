@@ -117,7 +117,7 @@ export const useSimulationStore = defineStore('simulation-store', () => {
 
         const close = $loading('Saving..')
         await _waiting(4000)
-        close()
+        await close()
 
         $toast('This is a confirm toast.')
         console.log('SELECTED_DATA', { ...selectedItems.value })

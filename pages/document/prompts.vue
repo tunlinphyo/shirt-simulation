@@ -23,7 +23,7 @@
               </ClientOnly>
           </ContainerArticle>
           <ContainerArticle>
-              <p>Create prompt with options. Second parameter is optional.</p>
+              <p>Create prompt with options.</p>
               <AppButton @click="optionPrompt()">Option Prompt</AppButton>
               <ContainerSpacer />
               <ClientOnly>

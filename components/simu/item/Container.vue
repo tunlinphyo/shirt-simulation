@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section :inert="isOpen">
         <header>{{ category ? category.name : '' }}</header>
         <ContainerScroll>
             <AppLoadingInline v-if="loading" />
@@ -20,6 +20,11 @@
 import { storeToRefs } from 'pinia'
 import { useSimulationStore } from '~/stores/simulation/index'
 
+export interface Props {
+  isOpen: boolean;
+}
+
+const props = defineProps<Props>()
 
 const simulationStore = useSimulationStore()
 const { loading, category, categoryId, items, itemId } = storeToRefs(simulationStore)

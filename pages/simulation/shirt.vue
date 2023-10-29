@@ -4,11 +4,11 @@
             <SimuDisplay />
         </template>
         <template #body>
-            <SimuContainer @back="goHome" @save="saveSimulation">
+            <SimuContainer :is-open="!!categoryId" @back="goHome" @save="saveSimulation">
                 <SimuCategoryList />
             </SimuContainer>
             <Transition name="slide">
-                <SimuItemContainer v-if="categoryId" />
+                <SimuItemContainer :is-open="!categoryId" v-if="categoryId" />
             </Transition>
         </template>
     </LayoutSimulation>

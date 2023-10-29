@@ -154,6 +154,7 @@ const createPrompt = (Modaler:HTMLElement, question:string, config:PromptConfig 
     node.classList.add(options.theme)
     node.classList.add('app-module')
     node.classList.add('app-module-prompt')
+    node.id = 'prompt'
 
     const p = document.createElement('p')
     p.textContent = question

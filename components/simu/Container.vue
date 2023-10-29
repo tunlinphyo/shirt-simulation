@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section :inert="isOpen">
         <ContainerScroll>
             <slot />
         </ContainerScroll>
@@ -11,6 +11,12 @@
 </template>
 
 <script lang="ts" setup>
+
+export interface Props {
+  isOpen: boolean;
+}
+
+const props = defineProps<Props>()
 const emit = defineEmits()
 
 function onBack() {
