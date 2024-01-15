@@ -8,10 +8,12 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700;900&display=swap');
+
 :root {
     --max-width: 1200px;
     --custom-ease: cubic-bezier(.2, 1, .2, 1);
-    --font: 'Montserrat', sans-serif;;
+    --font: 'Poppins', sans-serif;;
 }
 
 html,

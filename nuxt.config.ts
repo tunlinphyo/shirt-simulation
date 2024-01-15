@@ -27,8 +27,8 @@ export default defineNuxtConfig({
     display: 'swap',
     families: {
       'sans-serif': true,
-      'Montserrat': {
-        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900]
+      'Poppins': {
+        wght: [100, 200, 300, 400, 500, 700, 900]
       },
     }
   }

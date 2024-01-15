@@ -27,7 +27,7 @@
 h1 {
     margin: 0;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 900;
     text-align: center;
 }
 

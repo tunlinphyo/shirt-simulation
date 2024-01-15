@@ -42,6 +42,7 @@ button {
     text-align: left;
     cursor: pointer;
     border-radius: 3px;
+    font-size: .9rem;
     font-family: var(--font);
 }
 
